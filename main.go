@@ -37,10 +37,10 @@ func (ammf *AMMF) CreateStructure() {
 	dataTime , _ := time.Now().UTC().MarshalText()
 
 	ammf.CreateDate = string(dataTime)
-	ammf.ProcessorBINCIB = "407025"
-	ammf.ProcessorName = "PAYBOX Processing LLP"
-	ammf.FileSequence = "1"
-	ammf.Version = "2.4"
+	ammf.ProcessorBINCIB = os.Getenv("PROCESSOR_BINCIB")
+	ammf.ProcessorName = os.Getenv("PROCESSOR_NAME")
+	ammf.FileSequence = os.Getenv("FILE_SEQUENCE")
+	ammf.Version = os.Getenv("VERSION")
 
 	fmt.Println("Struct Created")
 }
