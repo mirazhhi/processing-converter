@@ -9,6 +9,7 @@ import (
 	"time"
 	"os"
 	"log"
+	"strings"
 	"github.com/tealeg/xlsx/v3"
 	"github.com/joho/godotenv"
 )
@@ -35,8 +36,9 @@ type AMMF struct {
 
 func (ammf *AMMF) CreateStructure() {
 	dataTime , _ := time.Now().UTC().MarshalText()
+	dataTimeString := string(dataTime)
 
-	ammf.CreateDate = string(dataTime)
+	ammf.CreateDate = strings.Split(dataTimeString, ".")[0]
 	ammf.ProcessorBINCIB = os.Getenv("PROCESSOR_BINCIB")
 	ammf.ProcessorName = os.Getenv("PROCESSOR_NAME")
 	ammf.FileSequence = os.Getenv("FILE_SEQUENCE")
